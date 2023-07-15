@@ -25,7 +25,9 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .addFilterAfter(firebaseFilterToken, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(sess->sess.sessionCreationPolicy(STATELESS))
-                .authorizeHttpRequests(request-> request.anyRequest().authenticated());
+                .authorizeHttpRequests(request-> request
+                        .requestMatchers("signUp").permitAll()
+                        .anyRequest().hasAuthority("user"));
         return httpSecurity.build();
     }
     @Bean
