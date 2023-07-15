@@ -21,11 +21,11 @@ public class FireBaseInitial {
     @PostConstruct
     public void initialFireBase() throws IOException {
         FileInputStream serviceAccount =
-                new FileInputStream("C:\\Users\\islem\\IdeaProjects\\FireBaseProject\\src\\main\\resources\\fireflutter-e6741-firebase-adminsdk-odwdj-b85f50ecda.json");
+                new FileInputStream("path/to/file.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://fireflutter-e6741-default-rtdb.firebaseio.com")
+                .setDatabaseUrl("url_DataBase")
                 .build();
 
         FirebaseApp.initializeApp(options);
